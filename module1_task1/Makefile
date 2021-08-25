@@ -7,7 +7,7 @@ clean :
 
 post : 
 	hugo new posts/$(POST_NAME).md
-	echo -e '---\ntitle: "$(POST_TITLE)"\ndate: 2010-03=26T08:47:11+01:00\ndraft: false\n---' > ./content/posts/$(POST_NAME).md  	
+	echo '---\ntitle: "$(POST_TITLE)"\ndate: 2010-03=26T08:47:11+01:00\ndraft: false\n---' > ./content/posts/$(POST_NAME).md  	
       
 
 
