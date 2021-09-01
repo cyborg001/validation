@@ -20,8 +20,8 @@ test: ## test the app with command curl http://localhost:9999 sending the messag
 	curl http://localhost:9999	
 	curl http://localhost:9999/health
 		
-help: ## gives a descriptios of every command
-	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1
-
 unit-tests: ## execute (successfully) the Golang unit tests:
 	go test -v -short -coverprofile=coverage-units.out
+
+help: ## gives a descriptios of every command
+	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1
