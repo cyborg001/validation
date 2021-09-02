@@ -19,9 +19,6 @@ clean: ## Delete the binary awesome-api and the log file awesome-api.log
 unit-tests: ## execute (successfully) the Golang unit tests:
 	go test -v -short -coverprofile=coverage-units.out
 
-integration-tests: ## implements the integration tests
-	go test <flags>
-
 test: ## test the app with command curl http://localhost:9999 sending the message "404 Page Not Found" and curl http://localhost:9999/health sending the message "ALIVE"
 	unit-tests
 	integration-tests
