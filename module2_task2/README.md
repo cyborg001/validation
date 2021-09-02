@@ -45,10 +45,10 @@
 	Stop the application with the command kill XXXXX where XXXXX is the Process
 	 ID of the application. For instance: kill "$(pgrep awesome-api)".
 
-### Test step:
-	You want to test it to ensure that it behaves as expected. With the application
-	started, you may want to use the command line curl (or your web browser, or the
-	command wget or any other HTTP client):
+### test step:
+	test the app with command curl http://localhost:9999 sending the message
+	"404 Page Not Found" and curl http://localhost:9999/health sending the
+	 message "ALIVE"
 
 ### unit-tests step:
 	executes the Golang unit tests
