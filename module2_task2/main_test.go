@@ -46,9 +46,9 @@ func Test_HelloHandler(t *testing.T) {
 
     {
       name:	    "Carlos Ethan",
-      queryString:  "name=Carlos Ethan&apellido=Juan Sanchez",
+      queryString:  "name=Carlos Ethan&name=Juan Sanchez",
       responseCode: 200,
-      body:	    "Hello Carlos Ethan!",		
+      body:	    "Hello Juan Sanchez!",		
     },
   }
   for _, tt := range tests {
