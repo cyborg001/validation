@@ -12,8 +12,8 @@ clean: ## Delete the binary awesome-api and the log file awesome-api.log
 	rm -rf ./awesome-api ./awesome.log > /dev/null 2>&1
 
 test: ## test the app with command curl http://localhost:9999 sending the message "404 Page Not Found" and curl http://localhost:9999/health sending the message "ALIVE"
-	curl http://localhost:9999 && curl http://localhost:9999/health || curl http://localhost:9999/health
-		
+	curl http://localhost:9999  http://localhost:9999/health  
+
 help: ## gives a descriptios of every command
 	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1
 

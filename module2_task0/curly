@@ -1,0 +1,3 @@
+#!/bin/bash
+curl http://localhost:9999 && curl http://localhost:9999/health || curl http://localhost:9999/health
+
