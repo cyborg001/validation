@@ -9,6 +9,7 @@ stop: ## Stop the application with the command kill XXXXX where XXXXX is the Pro
 
 .PHONY : clean
 clean: ## Delete the binary awesome-api and the log file awesome-api.log
+	make stop > /dev/null 2>&1 &
 	rm -rf ./awesome-api ./awesome.log > /dev/null 2>&1
 
 test: ## test the app with command curl http://localhost:9999 sending the message "404 Page Not Found" and curl http://localhost:9999/health sending the message "ALIVE"
