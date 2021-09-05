@@ -9,19 +9,22 @@ run: ## Run the application in background by executing the binary awesome-api, a
 	./awesome-api >./awesome.log 2>&1 &
 
 stop: ## Stop the application with the command kill XXXXX where XXXXX is the Process ID of the application. For instance: kill "$(pgrep awesome-api)".
-	killall awesome-api
+	kill $$(pgrep -f "awesome-api")
 
 .PHONY : clean
-clean: ## Delete the binary awesome-api and the log file awesome-api.log
-	rm -rf ./awesome-api > /dev/null 2>&1  
-	rm -rf ./awesome.log > /dev/null 2>&1
+clean: ## Delete the binary awesome-api and the log file awesome-api.log it also removes de coverage profiles
+	make stop > /dev/null 2>&1 &
+	rm -rf ./awesome-api ./awesome.log ./coverage-units.out ./coverage-integrations.out> /dev/null 2>&1
 
-unit-tests: ## execute (successfully) the Golang unit tests:
+unit-tests: ## executes (successfully) the Golang unit tests
 	go test -v -short -coverprofile=coverage-units.out
 
+integration-tests: ## executes the golang integration tests
+	go test -v -tags=integration -coverprofile=coverage-integrations.out
+
 test: ## test the app with command curl http://localhost:9999 sending the message "404 Page Not Found" and curl http://localhost:9999/health sending the message "ALIVE"
-	curl http://localhost:9999
-	curl http://localhost:9999/health
+	make unit-tests > /dev/null 2>&1 &
+	make integration-tests > /dev/null 2>&1 &
 
 help: ## gives a descriptios of every command
 	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1

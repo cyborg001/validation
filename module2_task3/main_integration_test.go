@@ -1,3 +1,5 @@
+// +build integration
+
 package main
 
 import (
@@ -25,10 +27,22 @@ func Test_server(t *testing.T) {
       body:         "404 page not found\n",
     },
     {
-      name:         "Health page",
+      name:         "Hello page",
       URI:          "/hello?name=Holberton",
       responseCode: 200,
       body:         "Hello Holberton!",
+    },
+    {
+      name:         "Health page",
+      URI:          "/health",
+      responseCode: 200,
+      body:         "ALIVE",
+    },
+    {
+      name:         "Blank page",
+      URI: 	    "/hello",
+      responseCode: 200,
+      body:         "Hello there!",
     },
   }
 
@@ -63,3 +77,4 @@ func Test_server(t *testing.T) {
     })
   }
 }
+
