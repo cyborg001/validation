@@ -23,8 +23,7 @@ integration-tests: ## executes the golang integration tests
 	go test -v -tags=integration -coverprofile=coverage-integrations.out
 
 test: ## test the app with command curl http://localhost:9999 sending the message "404 Page Not Found" and curl http://localhost:9999/health sending the message "ALIVE"
-	make unit-tests > /dev/null 2>&1 &
-	make integration-tests > /dev/null 2>&1 &
+	make unit-tests && make integration-tests
 
 help: ## gives a descriptios of every command
 	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1
