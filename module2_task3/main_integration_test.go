@@ -7,6 +7,7 @@ import (
   "net/http"
   "net/http/httptest"
   "testing"
+  "fmt"
 )
 
 func Test_server(t *testing.T) {
@@ -39,6 +40,12 @@ func Test_server(t *testing.T) {
       body:         "ALIVE",
     },
     {
+      name:         "Names page",
+      URI: 	    "/hello?name=Carlos&name=Ethan",
+      responseCode: 200,
+      body:         "Hello Ethan!",
+    },
+    {
       name:         "Blank page",
       URI: 	    "/hello",
       responseCode: 200,
@@ -51,7 +58,7 @@ func Test_server(t *testing.T) {
       ts := httptest.NewServer(setupRouter())
       defer ts.Close()
 
-      res, err := http.Get(ts.URL + tt.URI)
+      res, err := http.Get(ts.URL + tt.URI)     
       if err != nil {
         t.Fatal(err)
       }
