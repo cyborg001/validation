@@ -52,3 +52,8 @@
 
 ### unit-tests step:
 	executes the Golang unit tests
+
+### integration-tests step:
+	 to validate that the functions are behaving as expected when wired together.
+
+
