@@ -6,8 +6,7 @@ import (
   "io/ioutil"
   "net/http"
   "net/http/httptest"
-  "testing"
-  "fmt"
+  "testing" 
 )
 
 func Test_server(t *testing.T) {
