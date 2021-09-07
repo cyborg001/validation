@@ -9,7 +9,8 @@ post: ## crea un nuevo post en la carpeta que esta configurada en config.toml ac
 	hugo new posts/$(POST_NAME).md
 	echo '---\ntitle: "$(POST_TITLE)"\ndate: 2010-03=26T08:47:11+01:00\ndraft: false\n---' > ./content/posts/$(POST_NAME).md  	
 check: ## should fail when one of the 2 following steps fails:Lint of the Markdown source files using the command line "markdownlint-cli" Analysis of the links with the command line "markdown-link-check"	markdownlint /content/posts/*  &&  markdown-link-check ./content/posts/* && echo 'SUCCESS' || echo 'FAIL' || echo 'FAIL'
-	(markdownlint ./content/posts/welcome.md && markdown-link-check ./content/posts/welcome.md) > /dev/null 2>&1  
+	markdownlint ./content/posts/welcome.md >/dev/null 2>&1 &
+	markdown-link-check ./content/posts/welcome.md) >/dev/null 2>&1 & 
 
 
 validate: ## should validate the file ./dist/index.html by using the command line Holberton's W3C Validator, but should not fail if the file is not valid: you expect it to be a non-blocking quality indicator.
