@@ -1,4 +1,4 @@
-build  ##construlle una pagina estatica con hugo y la guarda en dist 
+build  ##construye una pagina estatica con hugo y la guarda en dist 
         hugo -D > /dev/null 2>&1
 
 .PHONY ##clean
